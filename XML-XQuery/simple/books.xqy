@@ -114,6 +114,28 @@ return
    </result>
    
    
+ for $author in distinct-values(/books/book/author) return
+<MYBOOKS>
+<AUTHOR NAME="{ $author }">
+{for $book in (/books/book)
+where $book/author=$author
+return <details>
+<title>{data($book/title)}</title>
+<price>{data($book/price)}</price>
+<year>{data($book/year)}</year>
+</details>
+}
+</AUTHOR>
+</MYBOOKS>
+
+
+
+
+
+
+
+
+   
 
 
 -->
